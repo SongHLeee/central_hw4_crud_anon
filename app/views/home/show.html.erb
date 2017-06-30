@@ -1,0 +1,38 @@
+<h1>게시글 보기</h1>
+
+<!--게시물 feed-->
+<div>
+        글번호: <%=@showPost.id%><br>
+        제목: <%= @showPost.title%><br>
+        작성자: <%= @showPost.editor%><br>
+        내용: <%= @showPost.content%><br>
+        <a href="/post_ud_page/<%=@showPost.id%>">[수 정]</a>
+        <a href="/post_destroy/<%=@showPost.id%>">[삭 제]</a>
+    
+    <hr>    
+    <!--replies write-->
+    <form action='/reply_write' method='POST'>
+        <input type="hidden" name="reply_id" value="<%=@showPost.id%>">
+        <div>
+            작성자: <input type='text' name="reply_editor">
+        </div>
+        <div>
+            내용: <textarea  name="reply_content"></textarea>
+        </div>
+        <button type="submit">댓글 작성</button>
+    </form>
+
+    <hr>
+    <!--replies feed-->
+        <% @showPost.replies.each do |r| %>
+        
+        댓글작성자: <%= r.editor %><br>
+        댓글내용: <%= r.content %><br>
+        <a href="/reply_destroy/<%=r.id%>">[댓글 삭제]</a><br>
+        
+        <%end%>
+        
+
+    
+</div>
+

@@ -1,0 +1,15 @@
+<h1>글 수정</h1>
+
+<form action='/post_update/<%=@thisPost.id%>' method='POST'>
+    <div>
+        작성자: <input type='text' name="post_editor" value="<%=@thisPost.editor%>">
+    </div>
+    <div>
+        제목: <input type='text' name="post_title" value="<%=@thisPost.title%>">
+    </div>
+    <div>
+        내용: <textarea  name="post_content"><%=@thisPost.content %></textarea>
+        
+    </div>
+    <button type="submit">저장</button>
+</form>
